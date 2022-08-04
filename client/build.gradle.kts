@@ -2,6 +2,7 @@ val kotestVersion: String by project
 val kotlinLoggingVersion: String by project
 val logbackVersion: String by project
 val coroutinesVersion: String by project
+val koinVersion: String by project
 
 plugins {
     kotlin("jvm")
