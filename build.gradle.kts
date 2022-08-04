@@ -16,7 +16,12 @@ subprojects {
         mavenCentral()
     }
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+    with(tasks) {
+        withType<KotlinCompile> {
+            kotlinOptions.jvmTarget = "17"
+        }
+        withType<Test>().configureEach {
+            useJUnitPlatform()
+        }
     }
 }
