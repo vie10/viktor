@@ -12,6 +12,7 @@ dependencies {
     implementation("io.github.microutils", "kotlin-logging-jvm", kotlinLoggingVersion)
     implementation("ch.qos.logback", "logback-classic", logbackVersion)
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
+    implementation("io.insert-koin", "koin-core", koinVersion)
 }
 
 dependencies {
