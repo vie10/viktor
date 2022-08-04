@@ -1,15 +1,15 @@
-package online.viestudio.viktor.core.os
+package online.viestudio.viktor.client.os
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import online.viestudio.viktor.core.os.OS.arch
-import online.viestudio.viktor.core.os.OS.classpathSeparator
-import online.viestudio.viktor.core.os.OS.isLinux
-import online.viestudio.viktor.core.os.OS.isMac
-import online.viestudio.viktor.core.os.OS.isWindows
-import online.viestudio.viktor.core.os.OS.name
-import online.viestudio.viktor.core.os.OS.resolveApplicationDir
-import online.viestudio.viktor.core.os.OS.userHome
+import online.viestudio.viktor.client.os.OS.arch
+import online.viestudio.viktor.client.os.OS.classpathSeparator
+import online.viestudio.viktor.client.os.OS.isLinux
+import online.viestudio.viktor.client.os.OS.isMac
+import online.viestudio.viktor.client.os.OS.isWindows
+import online.viestudio.viktor.client.os.OS.name
+import online.viestudio.viktor.client.os.OS.resolveApplicationDir
+import online.viestudio.viktor.client.os.OS.userHome
 import java.io.File
 
 class OSTest : BehaviorSpec({

@@ -1,4 +1,4 @@
-package online.viestudio.viktor.core.utils
+package online.viestudio.viktor.client.utils
 
 import mu.KLogger
 import java.awt.Desktop

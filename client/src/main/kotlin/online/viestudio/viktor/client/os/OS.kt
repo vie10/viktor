@@ -1,4 +1,4 @@
-package online.viestudio.viktor.core.os
+package online.viestudio.viktor.client.os
 
 import java.io.File
 
