@@ -3,6 +3,7 @@ package online.viestudio.viktor.core.os
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import online.viestudio.viktor.core.os.OS.arch
+import online.viestudio.viktor.core.os.OS.classpathSeparator
 import online.viestudio.viktor.core.os.OS.isLinux
 import online.viestudio.viktor.core.os.OS.isMac
 import online.viestudio.viktor.core.os.OS.isWindows
@@ -24,7 +25,14 @@ class OSTest : BehaviorSpec({
                 arch.shouldBe(System.getProperty("os.arch"))
             }
         }
-
+        `when`("get pathSeparator") {
+            then("returns \";\"").config(enabled = isWindows) {
+                classpathSeparator.shouldBe(";")
+            }
+            then("returns \":\"").config(enabled = !isWindows) {
+                classpathSeparator.shouldBe(":")
+            }
+        }
         `when`("resolve application dir") {
             then("is under \"Application Support\" dir").config(enabled = isMac) {
                 resolveApplicationDir("test").parentFile.name.contains("application support", true)
