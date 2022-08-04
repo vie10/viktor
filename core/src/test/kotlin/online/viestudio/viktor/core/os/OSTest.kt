@@ -2,16 +2,16 @@ package online.viestudio.viktor.core.os
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import online.viestudio.viktor.core.os.OperationSystem.arch
-import online.viestudio.viktor.core.os.OperationSystem.isLinux
-import online.viestudio.viktor.core.os.OperationSystem.isMac
-import online.viestudio.viktor.core.os.OperationSystem.isWindows
-import online.viestudio.viktor.core.os.OperationSystem.name
-import online.viestudio.viktor.core.os.OperationSystem.resolveApplicationDir
-import online.viestudio.viktor.core.os.OperationSystem.userHome
+import online.viestudio.viktor.core.os.OS.arch
+import online.viestudio.viktor.core.os.OS.isLinux
+import online.viestudio.viktor.core.os.OS.isMac
+import online.viestudio.viktor.core.os.OS.isWindows
+import online.viestudio.viktor.core.os.OS.name
+import online.viestudio.viktor.core.os.OS.resolveApplicationDir
+import online.viestudio.viktor.core.os.OS.userHome
 import java.io.File
 
-class OperationSystemTest : BehaviorSpec({
+class OSTest : BehaviorSpec({
 
     given("this system") {
         `when`("get name") {

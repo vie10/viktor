@@ -3,7 +3,7 @@ package online.viestudio.viktor.core.os
 import java.io.File
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
-object OperationSystem {
+object OS {
 
     const val UNDEFINED_VALUE = "undefined"
 
