@@ -16,7 +16,7 @@ object OS {
     val userName get() = System.getProperty("user.name") ?: UNDEFINED_VALUE
     val userHome get() = File(System.getProperty("user.home"))
     val bitness = System.getProperty("sun.arch.data.model") ?: UNDEFINED_VALUE
-    val classpathSeparator get() = System.getProperty("path.separator") ?: "/"
+    val classpathSeparator get() = System.getProperty("path.separator") ?: ":"
 
     fun resolveApplicationDir(applicationName: String): File {
         val dir = if (isWindows) {
