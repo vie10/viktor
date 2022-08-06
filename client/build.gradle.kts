@@ -6,16 +6,20 @@ val kotlinLoggingVersion: String by project
 val logbackVersion: String by project
 val coroutinesVersion: String by project
 val koinVersion: String by project
+val ktorVersion: String by project
 
 plugins {
     kotlin("jvm")
 }
 
 dependencies {
-    implementation("io.github.microutils", "kotlin-logging-jvm", kotlinLoggingVersion)
-    implementation("ch.qos.logback", "logback-classic", logbackVersion)
-    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
-    implementation("io.insert-koin", "koin-core", koinVersion)
+    api("io.ktor", "ktor-client-cio", ktorVersion)
+    api("io.ktor", "ktor-client-core", ktorVersion)
+    api("io.ktor", "ktor-client-content-negotiation", ktorVersion)
+    api("io.github.microutils", "kotlin-logging-jvm", kotlinLoggingVersion)
+    api("ch.qos.logback", "logback-classic", logbackVersion)
+    api("org.jetbrains.kotlinx", "kotlinx-coroutines-core", coroutinesVersion)
+    api("io.insert-koin", "koin-core", koinVersion)
 }
 
 dependencies {
