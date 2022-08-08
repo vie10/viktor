@@ -8,15 +8,19 @@ import online.viestudio.viktor.client.utils.measuredDebug
 import org.koin.core.component.inject
 import java.io.File
 
+@Suppress("unused")
 abstract class BaseResourcesManager : ResourcesManager {
 
     private val log = KotlinLogging.logger("Resources Manager")
     private val client by inject<Client>()
     final override val resourcesDir: File = client.dataDir.resolve("resources")
 
-    final override fun update() {
+    final override suspend fun update() {
         measureCatching {
-            if (onUpdate()) load()
+            if (onUpdate()) {
+                load()
+                client.onEvent(ResourcesUpdateEvent())
+            }
         }.onSuccess {
             log.measuredDebug("Resources updated", it)
         }.onFailure {
@@ -24,9 +28,9 @@ abstract class BaseResourcesManager : ResourcesManager {
         }
     }
 
-    protected abstract fun onUpdate(): Boolean
+    protected abstract suspend fun onUpdate(): Boolean
 
-    protected abstract fun load()
+    protected abstract suspend fun load()
 
     final override fun toString(): String = "$client Resources Manager"
 }
