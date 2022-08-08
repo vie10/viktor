@@ -9,6 +9,7 @@ import mu.KLogger
 import mu.KotlinLogging
 import online.viestudio.viktor.client.component.Component
 import online.viestudio.viktor.client.coroutines.launchInScope
+import online.viestudio.viktor.client.event.Event
 import online.viestudio.viktor.client.os.OS
 import online.viestudio.viktor.client.state.State
 import online.viestudio.viktor.client.utils.*
@@ -101,4 +102,8 @@ abstract class BaseClient(
     protected open suspend fun onStop() {}
 
     final override fun toString(): String = "Client $name"
+
+    override suspend fun onEvent(event: Event) {
+        components.filter { it.state == State.Active }.forEach { it.onEvent(event) }
+    }
 }

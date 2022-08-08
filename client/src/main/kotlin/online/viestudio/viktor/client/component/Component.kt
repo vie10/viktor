@@ -1,5 +1,6 @@
 package online.viestudio.viktor.client.component
 
+import online.viestudio.viktor.client.event.Event
 import online.viestudio.viktor.client.log.Loggable
 import online.viestudio.viktor.client.state.State
 
@@ -12,4 +13,6 @@ interface Component : Loggable {
     suspend fun start()
 
     suspend fun stop()
+
+    suspend fun onEvent(event: Event)
 }
