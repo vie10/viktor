@@ -6,6 +6,7 @@ import online.viestudio.viktor.client.coroutines.CoroutineScopeHolder
 import online.viestudio.viktor.client.log.Loggable
 import online.viestudio.viktor.client.state.State
 import org.koin.core.component.KoinComponent
+import java.io.File
 
 interface Client : Loggable, CoroutineScopeHolder, KoinComponent {
 
@@ -13,6 +14,7 @@ interface Client : Loggable, CoroutineScopeHolder, KoinComponent {
     val stateFlow: StateFlow<State>
     val state: State
     val components: Set<Component>
+    val dataDir: File
 
     suspend fun start(): Boolean
 

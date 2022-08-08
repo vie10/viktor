@@ -9,8 +9,10 @@ import mu.KLogger
 import mu.KotlinLogging
 import online.viestudio.viktor.client.component.Component
 import online.viestudio.viktor.client.coroutines.launchInScope
+import online.viestudio.viktor.client.os.OS
 import online.viestudio.viktor.client.state.State
 import online.viestudio.viktor.client.utils.*
+import java.io.File
 import java.util.concurrent.CancellationException
 
 abstract class BaseClient(
@@ -25,6 +27,7 @@ abstract class BaseClient(
     final override val scope: CoroutineScope = CoroutineScope(dispatcher)
     final override val log: KLogger = KotlinLogging.logger(toString())
     final override val components: Set<Component> get() = getKoin().getAll<Component>().toSet()
+    override val dataDir: File = OS.resolveApplicationDir(name)
 
     override suspend fun start(): Boolean {
         if (state != State.Inactive) return false
