@@ -1,3 +1,2 @@
 rootProject.name = "viktor"
-include("client", "api")
-include("server")
+include("client", "api", "server", "server-less")
