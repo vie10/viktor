@@ -15,6 +15,8 @@ abstract class BaseResourcesManager : ResourcesManager {
     private val client by inject<Client>()
     final override val resourcesDir: File = client.dataDir.resolve("resources")
 
+    override fun resolveResource(path: String) = resourcesDir.resolve(path)
+
     final override suspend fun update() {
         measureCatching {
             if (onUpdate()) {

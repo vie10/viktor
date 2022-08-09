@@ -1,2 +1,2 @@
 rootProject.name = "viktor"
-include("client")
+include("client", "api")

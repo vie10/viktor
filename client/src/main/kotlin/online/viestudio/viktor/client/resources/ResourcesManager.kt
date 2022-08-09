@@ -7,5 +7,7 @@ interface ResourcesManager : KoinComponent {
 
     val resourcesDir: File
 
+    fun resolveResource(path: String): File
+
     suspend fun update()
 }

@@ -13,6 +13,7 @@ plugins {
 }
 
 dependencies {
+    api(project(":api"))
     api("io.ktor", "ktor-client-core", ktorVersion)
     api("io.github.microutils", "kotlin-logging-jvm", kotlinLoggingVersion)
     api("ch.qos.logback", "logback-classic", logbackVersion)

@@ -10,11 +10,17 @@ import io.ktor.util.cio.*
 import io.ktor.utils.io.*
 import io.ktor.utils.io.core.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import mu.KLogger
+import online.viestudio.viktor.api.hash.Hash
+import online.viestudio.viktor.client.security.checksum
 import java.awt.Desktop
 import java.io.File
 import java.net.URI
@@ -56,6 +62,22 @@ suspend fun File.write(channel: ByteReadChannel) = withContext(Dispatchers.IO) {
                 val bytes = packet.readBytes()
                 writeFully(bytes)
             }
+        }
+    }
+}
+
+suspend fun File.verify(hash: Hash): Boolean = checksum(hash.algorithm) == hash.hex
+
+suspend inline fun <T> Set<T>.forEachAsync(
+    parallelism: Int = Runtime.getRuntime().availableProcessors(),
+    crossinline block: suspend (T) -> Unit,
+) {
+    val semaphore = Semaphore(parallelism)
+    coroutineScope {
+        forEach {
+            async {
+                semaphore.withPermit { block(it) }
+            }.start()
         }
     }
 }

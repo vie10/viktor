@@ -8,13 +8,11 @@ import io.ktor.utils.io.core.*
 import java.io.File
 import java.security.MessageDigest
 
-suspend fun File.sha1Checksum() = readChannel().sha1Checksum()
+suspend fun File.sha1Checksum() = checksum("SHA1")
 
-suspend fun File.sha256Checksum() = readChannel().sha256Checksum()
+suspend fun File.sha256Checksum() = checksum("SHA256")
 
-suspend fun ByteReadChannel.sha1Checksum() = checksum("SHA1")
-
-suspend fun ByteReadChannel.sha256Checksum() = checksum("SHA256")
+suspend fun File.checksum(algorithm: String): String = readChannel().checksum(algorithm)
 
 suspend fun ByteReadChannel.checksum(algorithm: String): String {
     val md = MessageDigest.getInstance(algorithm)
